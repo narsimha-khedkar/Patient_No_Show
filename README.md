@@ -1,12 +1,12 @@
-# Patient no show EDA + Visualizaion + Prediction using KNN🏥
+# Patient no show EDA + Visualizaion + Prediction using KNN
 ![image info](./Pictures/no-show-patients.jpg)<br>
 
 
-### 🎯 Project goal 
+### Project goal 
 ---
 An American study found that up to 30% of patients missed their appointments and that 150 billion dollars a year was lost due to this. This project aims to analyze the reasons behind missed appointments with data visualizations and identify if any trends are present.<br>
 
-### 🔎 Overview 
+### Overview 
 ---
 The [Kaggle](https://www.kaggle.com/joniarroba/noshowappointments)  dataset comprised 110k appointments records from public healthcare institutions in a Brazilian city. 
 The appointments occurred across a 6-week period in 2016 (27 days ). 
@@ -37,15 +37,20 @@ Ages under 0 were deleted. There is no null data in the dataset.
 **C**: Individuals in different age groups exhibit different No-Show behaviors. For example, infants/boys/girls, teenagers, working-age people, and retired populations will all have different No-Show patterns. We can see from this figure that a high rate of females in the age range 20-30 are absent, while there is a high rate of males in the age range of 10-20 who are absent. <br><br>
 
 
-**Show vs. no show by clinic location**<br>
+**Show vs. no show by clinic location**<br><br>
 ![image info](./Pictures/dv5.png)<br>
 
 **Figure 2:** we can see here that there is a high rate of absent patients from some of the neighborhoods like nova Palestina.<br><br>
 
-**Show vs. no show by other categorical features**<br>
+**Show vs. no show by other categorical features**<br><br>
 ![image info](./Pictures/dv6.png)<br>
 
 **Figure 3:** This figure shows the no show count for each of the other categorical features<br><br>
+
+**Pair plot of Show vs. no show by other categorical features**<br><br>
+![image info](./Pictures/dv8.png)<br>
+
+**Figure 4:** This Pair plot helps us to understand the best set of features to explain a relationship between two variables or to form the most separated clusters.
 
 **Features correlation**
 
@@ -55,24 +60,38 @@ Before machine learning, we must check if there is a correlation between the fea
 ---
 
 ### Machine learning <br>
+---
 #### Model selection and evaluation <br>
-This is a binary classification problem, so that I will use the classification models. Features like the scheduled day and appointment day were split into the day of the month, month, and day of the week. Patient id, appointment id, and the neighborhood were dropped (because there are 81 neighborhoods and there will be many features, and it may be cause overfitting).
+This is a binary classification problem, so I will be using KNN Classifier. Features like Patient id, appointment id, and the neighborhood were dropped (because there are 81 neighborhoods and there will be many features, and it may be cause overfitting).
 
 #### Step 1 : <br>
 
 **The dataset was split into 80 % of the appointments, with a 20% test data set.**<br>
 
+Using five cross-validation folds, the data was fitted on KNN Classifier using RandomizedSearchCV. With this we found the best KNN as 18 with an accurancy of approximately 80%. 
 
-**Figure 11**:<br>
-Classification reports for the individual classifiers (with the test set), all the classifiers have approximately the same overall accuracy, precision, and recall.<br>
-Using five cross-validation folds, the data was fitted on random forest, logistic regression, KNN, naïve Bayes, and tree classification with their default parameter. Then, the models were evaluated based on their accuracy, precision, recall,f1, and roc AUC score, as shown in figure 11 below.
-The test set data performance with random forest results in a recall of 21% for the absent patients, a precision of 40% with an overall accuracy of 78%, and an f1 score of 0.28 for the no-show class. I tried to improve the results in step 2.<br><br>
+#### Step 2 : <br>
+
+We then looped through for various K values and plotted the K elbow graph which shows us that as K or Number of neighbors increases, the accuracy increases until it reaches an optimal point. 
+
+![image info](./Pictures/dv9.png)<br>
+**Figure 5:** This plot looks like an arm with a clear elbow at k =18
+
+#### Step 3 : <br>
+
+We then ran a comparision to Evaluate KNN Performance on train and test sets with different numbers of neighbors.
+
+![image info](./Pictures/dv11.png)<br>
+**Figure 6:** As you can see here, the train and test performance was almost similar.
+We can then conclude that 
+- KNN classifier does not have any specialized training phase as it uses all the training samples for classification and simply stores the results in memory.
+- KNN is a non-parametric algorithm because it does not assume anything about the training data. This makes it useful for problems having non-linear data.
+- KNN can be computationally expensive both in terms of time and storage, if the data is very large because KNN has to store the training data to work. This is generally not the case with other supervised learning models.
+- KNN can be very sensitive to the scale of data as it relies on computing the distances. For features with a higher scale, the calculated distances can be very high and might produce poor results. It is thus advised to scale the data before running the KNN.
 
 
-
----
 ### Conclusion :
-
+---
 In conclusion, it seems that no-shows can be predicted from patient information and appointment data. More information about the clinic’s location (e.g., transport accessibility), type of care sought (e.g., primary, specialist), and the patient (e.g., education, income) would likely improve the model. The model could also benefit from a cost-benefit analysis of possible intervention measures to achieve a balance of precision and recall that would make the most business sense.
 -	Patients with a high number of previous No-Shows are more likely to No Show in future appointments.
 -	 Appointments booked “Within 24 hours” are less likely to be No Shows as we can show from figure 7.
@@ -82,7 +101,8 @@ In conclusion, it seems that no-shows can be predicted from patient information 
 -	SMS could be a helpful way to remind patients of their appointments, and we can see that many patients did not receive an SMS, as we can see from figure 8.<br><br>
 
 **Recommendations to improve the attendance:**<br>
--	 sending the SMS notification to every patient who made an appointment.
+-   Perform feature engineering by developing parameters such as Waiting Days, Disease Breakdown, Total Prior Appointments etc.
+-	sending the SMS notification to every patient who made an appointment.
 -	Trying to make the appointment as quickly as possible, limit to less than 15 days.
 -	Call the patients who received the SMS and missed up their appointment.
 
