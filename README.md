@@ -89,6 +89,12 @@ We can then conclude that
 - KNN can be computationally expensive both in terms of time and storage, if the data is very large because KNN has to store the training data to work. This is generally not the case with other supervised learning models.
 - KNN can be very sensitive to the scale of data as it relies on computing the distances. For features with a higher scale, the calculated distances can be very high and might produce poor results. It is thus advised to scale the data before running the KNN.
 
+#### Step 3 : <br>
+
+![image info](./Pictures/dv10.png)<br>
+
+**Figure 7:** From the Confusion Matrix we can see that most of our errors were where the model predicted a patient to show when they did not.
+
 
 ### Conclusion :
 ---
