@@ -30,7 +30,7 @@ Ages under 0 were deleted. There is no null data in the dataset.
 ---
 
 **Patients by Gender**<br>
-![image](https://drive.google.com/uc?export=view&id=1Lhx45SDsdvBb0h2e1IGezUmvhXCtbzk3)<br>
+![image info](./Pictures/dv0.png)<br>
 **Figure 1 :** **A**-(counterclockwise) we can see that 65% of the patients are female (the inner circle), 78% of them (51.8% of the data) show up to the appointments, while 22% of them are absent(13.2% of the overall patients).35% of the patients who make appointments are male, 80% of them show up (28.0% of the patients), while 20% of them are absent (7.0%).<br>
 **B-** The distribution of no-shows by age and gender - we can see that in the range 0-10, there is no difference between the rate of no-shows between males and females. However, from the age range of 10-18, the male has more no show, while from the age 18-60, the female has more no show than male.
 
