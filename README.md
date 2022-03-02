@@ -1,6 +1,8 @@
 # Patient no show EDA + Visualizaion + Prediction using KNN
 ![image info](./Pictures/no-show-patients.jpg)<br>
 
+   [Report summary](https://drive.google.com/file/d/16RCD_4BEKDKMKZmpf8V8AP3uVs5Gv_45/view?usp=sharing)<br>
+
 
 ### Project goal 
 ---
