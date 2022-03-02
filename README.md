@@ -100,11 +100,9 @@ We can then conclude that
 ---
 In conclusion, it seems that no-shows can be predicted from patient information and appointment data. More information about the clinic’s location (e.g., transport accessibility), type of care sought (e.g., primary, specialist), and the patient (e.g., education, income) would likely improve the model. The model could also benefit from a cost-benefit analysis of possible intervention measures to achieve a balance of precision and recall that would make the most business sense.
 -	Patients with a high number of previous No-Shows are more likely to No Show in future appointments.
--	 Appointments booked “Within 24 hours” are less likely to be No Shows as we can show from figure 7.
--	 Patients in different age groups exhibit different No-Show behaviors, as shown in figure 3 and figure 9.
--	 Longer waiting time, more patients will be absent from the appointments, as we can see from figure 7. So, again, this should be a point to be considered to ameliorate.
--	The neighborhood's location may affect the patients to decide whether they show up for their medical appointments; as shown in figure 6, some neighborhoods have a high rate of absent patients.
--	SMS could be a helpful way to remind patients of their appointments, and we can see that many patients did not receive an SMS, as we can see from figure 8.<br><br>
+-	 Patients in different age groups exhibit different No-Show behaviors, as shown in figure 1.
+-	The neighborhood's location may affect the patients to decide whether they show up for their medical appointments; as shown in figure 2, some neighborhoods have a high rate of absent patients.
+-	SMS could be a helpful way to remind patients of their appointments, and we can see that many patients did not receive an SMS.<br><br>
 
 **Recommendations to improve the attendance:**<br>
 -   Perform feature engineering by developing parameters such as Waiting Days, Disease Breakdown, Total Prior Appointments etc.
